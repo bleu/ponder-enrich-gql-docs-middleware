@@ -1,0 +1,115 @@
+{
+  "name": "ponder-enrich-gql-docs-middleware",
+  "version": "0.1.0",
+  "description": "A middleware for Ponder that allows devs to enrich their GraphQL docs with docstrings",
+  "main": "./lib/src/index.js",
+  "files": [
+    "lib/src/**/*"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rm -rf ./lib/",
+    "cm": "cz",
+    "lint": "biome check --write src/ test/",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bleu/ponder-enrich-gql-docs-middleware.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "José Ribeiro",
+    "email": "ribeirojose@users.noreply.github.com",
+    "url": "https://github.com/ribeirojose"
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "keywords": [
+    "ponder",
+    "docstring",
+    "graphql"
+  ],
+  "bugs": {
+    "url": "https://github.com/bleu/ponder-enrich-gql-docs-middleware/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "homepage": "https://github.com/bleu/ponder-enrich-gql-docs-middleware#readme",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@ryansonshine/commitizen": "^4.2.8",
+    "@types/node": "^12.20.55",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "graphql": "^16.10.0",
+    "hono": "^4.6.19",
+    "husky": "^6.0.0",
+    "lint-staged": "^13.2.1",
+    "node-mocks-http": "^1.16.2",
+    "semantic-release": "^21.0.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.2.4",
+    "undici": "^7.3.0",
+    "vitest": "^3.0.4"
+  },
+  "peerDependencies": {
+    "graphql": "^16.10.0",
+    "hono": "^4.6.19"
+  },
+  "lint-staged": {
+    "*.ts": "biome check --write"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "build",
+                "section": "Dependencies and Other Build Updates",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  }
+}

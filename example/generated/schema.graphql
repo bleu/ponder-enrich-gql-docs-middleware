@@ -1,0 +1,93 @@
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+scalar BigInt
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Meta {
+  status: JSON
+}
+
+type Query {
+  tokenPaid(address: String!): tokenPaid
+  tokenPaids(where: tokenPaidFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): tokenPaidPage!
+  tokenBorrowed(address: String!): tokenBorrowed
+  tokenBorroweds(where: tokenBorrowedFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): tokenBorrowedPage!
+  _meta: Meta
+}
+
+type tokenPaid {
+  address: String!
+  amount: BigInt!
+}
+
+type tokenPaidPage {
+  items: [tokenPaid!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input tokenPaidFilter {
+  AND: [tokenPaidFilter]
+  OR: [tokenPaidFilter]
+  address: String
+  address_not: String
+  address_in: [String]
+  address_not_in: [String]
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_ends_with: String
+  address_not_starts_with: String
+  address_not_ends_with: String
+  amount: BigInt
+  amount_not: BigInt
+  amount_in: [BigInt]
+  amount_not_in: [BigInt]
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+}
+
+type tokenBorrowed {
+  address: String!
+  amount: BigInt!
+}
+
+type tokenBorrowedPage {
+  items: [tokenBorrowed!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input tokenBorrowedFilter {
+  AND: [tokenBorrowedFilter]
+  OR: [tokenBorrowedFilter]
+  address: String
+  address_not: String
+  address_in: [String]
+  address_not_in: [String]
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_ends_with: String
+  address_not_starts_with: String
+  address_not_ends_with: String
+  amount: BigInt
+  amount_not: BigInt
+  amount_in: [BigInt]
+  amount_not_in: [BigInt]
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+}

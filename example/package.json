@@ -1,0 +1,28 @@
+{
+  "name": "my-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ponder dev",
+    "start": "ponder start",
+    "db": "ponder db",
+    "codegen": "ponder codegen",
+    "serve": "ponder serve",
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "graphql": "^16.10.0",
+    "hono": "^4.6.19",
+    "ponder": "^0.8.33",
+    "ponder-enrich-gql-docs-middleware": "link:..",
+    "viem": "^2.22.16"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18.14"
+  }
+}
