@@ -28,7 +28,7 @@ describe("createDocumentationMiddleware", () => {
         },
       ],
     });
-
+    // @ts-expect-error
     await middleware(context, next);
     expect(next).toHaveBeenCalled();
   });

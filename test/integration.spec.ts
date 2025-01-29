@@ -50,6 +50,7 @@ describe("Integration", () => {
       mockSchema,
     );
 
+    // @ts-expect-error
     await middleware(mockContext, async () => {
       // After next() is called, we need to ensure the context has
       // the response with the schema before enhancement
