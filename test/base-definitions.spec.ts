@@ -1,11 +1,11 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   baseDefinitions,
+  extendWithBaseDefinitions,
   generateFilterDocs,
   generatePageDocs,
-  extendWithBaseDefinitions,
-  generateTypeDocSet,
   generateQueryDocs,
+  generateTypeDocSet,
 } from "../src/base-definitions";
 
 describe("Base Definitions", () => {

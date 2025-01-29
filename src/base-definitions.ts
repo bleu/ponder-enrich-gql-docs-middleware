@@ -125,13 +125,9 @@ export function generateTypeDocSet(
     // Because "User.description" won't match anything in the schema
 
     // Pagination docs, query docs, etc.
-    ...Object.entries(fields).reduce(
-      (acc, [fieldName, fieldDesc]) => ({
-        ...acc,
-        ...generateFilterDocs(fieldName, fieldDesc),
-      }),
-      {},
-    ),
+    ...Object.entries(fields).reduce((acc, [fieldName, fieldDesc]) => {
+      return Object.assign(acc, generateFilterDocs(fieldName, fieldDesc));
+    }, {}),
     ...generatePageDocs(typeName, description),
     ...generateQueryDocs(typeName, description),
   };
